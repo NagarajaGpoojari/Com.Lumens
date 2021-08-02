@@ -29,9 +29,11 @@ public class Login_StepDef extends BaseClass {
 		Login.logintoLumens(testdata.get(3), testdata.get(5));
 		System.out.println("Login Successfully done ");
 	}
+	/*
 	@Then("^navigate to Account and click on signout$")
 	public void navigate_to_Account_and_click_on_signout() throws Throwable {
 		Login=new Login_PageObject();
 	   Login.Logout(); 
+	   */
 }
-	}
+	

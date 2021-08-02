@@ -31,6 +31,7 @@ import cucumber.api.java.en.Then;
 			verify=new HomePage();
 			verify.VerifyTitle();
 			
+			
 		}
 	}
 

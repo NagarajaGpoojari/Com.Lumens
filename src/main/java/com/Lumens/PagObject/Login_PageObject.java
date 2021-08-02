@@ -2,11 +2,14 @@ package com.Lumens.PagObject;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.Lumens.Util.BaseClass;
 
@@ -46,27 +49,36 @@ public class Login_PageObject extends BaseClass {
 	
 	public void Account() {
 		
+		WebDriverWait wait = new WebDriverWait(driver,40);
+		  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='ltkpopup-close-button']")));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", closePopup);
 		closePopup.click();
+		
 		Account.getLocation();
 		Actions action=new Actions(driver);
 		action.moveToElement(Account).build().perform();
 		signup.click();
 }
-	public void logintoLumens(String email, String password) {
+	public void logintoLumens(String email, String password) throws Exception {
+		
+		WebDriverWait wait = new WebDriverWait(driver,40);
+		  wait.until(ExpectedConditions.elementToBeClickable(By.id("dwfrm_login_username")));
+		
 		Email.sendKeys(email);
-		Password.sendKeys(password);
+		
+		 WebDriverWait wait1 = new WebDriverWait(driver,40);
+		   	wait1.until(ExpectedConditions.elementToBeClickable(By.id("dwfrm_login_password")));
+		   	Password.sendKeys(password);
+		
+		
+		
 		submit.click();
 		
 	}
-	public void Logout() throws Exception {
-		Thread.sleep(20000);
-		//((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Account2);
-		//Account2.getLocation();
-		Actions action=new Actions(driver);
-		action.moveToElement(Account2).build().perform();
-		Logoutlink.getLocation();
-		Logoutlink.click();
-		Logout.click();
-	}
+	
 }
+
+
+
+
+
